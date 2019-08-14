@@ -21,8 +21,8 @@ export const headerStyles = StyleSheet.create({
         color: colors.text_color,
     },
     line: {
-        width: 90,
-        height:1,
+        width: 240,
+        height: 1,
 
         marginTop: 15,
         marginBottom: 5,

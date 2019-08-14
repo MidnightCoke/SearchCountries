@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, ScrollView} from 'react-native';
 
 import { Header, SearchInput } from '../../components';
+import CountryObject from './CountryObject';
 
 class Home extends React.Component{
     onSearchButtonTouched = () => {
@@ -22,6 +23,7 @@ class Home extends React.Component{
                         onChangeText={this.onChangeSearchQuery}
                         style= {{alignSelf: 'center'}}
                     />
+                    <CountryObject />
                 </ScrollView>
             </View>
         );
