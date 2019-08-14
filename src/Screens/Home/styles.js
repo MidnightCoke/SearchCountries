@@ -18,6 +18,12 @@ export const homeStyles = StyleSheet.create({
         marginTop: 36,
         backgroundColor: colors.gray,
     },
+    fabButton: {
+        position: 'absolute',
+        bottom: 32,
+        end: 20,
+
+    },
 
 });
 
@@ -51,5 +57,6 @@ export const countryObjectStyles = StyleSheet.create({
         backgroundColor: 'green',
         borderRadius: 4,
     },
+
 
 });

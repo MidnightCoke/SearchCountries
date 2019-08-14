@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {View, ScrollView} from 'react-native';
-
-import { Header, SearchInput } from '../../components';
+import {homeStyles as styles} from './styles';
+import { Header, SearchInput,FabButton } from '../../components';
 import CountryObject from './CountryObject';
 
 class Home extends React.Component{
@@ -10,6 +10,9 @@ class Home extends React.Component{
     };
     onChangeSearchQuery = (text) => {
         console.warn('bitch =' + text);
+    };
+    onFabButtonTouched = () =>{
+        console.warn('fabButton has been touched');
     };
 
     render(){
@@ -25,6 +28,11 @@ class Home extends React.Component{
                     />
                     <CountryObject />
                 </ScrollView>
+                <FabButton 
+                icon='refresh' 
+                onPress={this.onFabButtonTouched}
+                style = {styles.fabButton}
+                />
             </View>
         );
     }
