@@ -1,14 +1,28 @@
 import * as React from 'react';
-import {View, Text} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
-import { Header, Icon } from '../../components';
+import { Header, SearchInput } from '../../components';
 
 class Home extends React.Component{
+    onSearchButtonTouched = () => {
+        console.warn('WHATS UP');
+    };
+    onChangeSearchQuery = (text) => {
+        console.warn('bitch =' + text);
+    };
+
     render(){
         return(
-            <View>
-                <Header/>
-                <Icon name='search' tintColor='black'/>
+            <View style={{ flex: 1 }}>
+                <ScrollView style= {{ flex: 1}}>
+                    <Header />
+                    <SearchInput
+                        placeholder='Ülke Adı'
+                        onPress={this.onSearchButtonTouched}
+                        onChangeText={this.onChangeSearchQuery}
+                        style= {{alignSelf: 'center'}}
+                    />
+                </ScrollView>
             </View>
         );
     }
