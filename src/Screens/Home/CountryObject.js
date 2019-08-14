@@ -1,5 +1,8 @@
 import * as React from 'react';
 import {View, Text, TouchableOpacity, TouchableNativeFeedback,Platform} from 'react-native';
+
+import { Icon } from '../../components';
+import {colors} from '../../config/colors';
 import {countryObjectStyles as styles} from './styles';
 
 class CountryObject extends React.Component {
@@ -12,10 +15,10 @@ class CountryObject extends React.Component {
         return(
             <TouchableComponent style={styles.container}>
                 <View style={styles.contentContainer}>
-                    <View style={styles.countryFlag}>
-
-                    </View>
+                    <View style={styles.countryFlag}/>
                     <Text style={styles.countryName}> {countryName} </Text>
+                   
+                    <Icon name='arrow' tintColor={colors.text_color} />
                 </View>
             </TouchableComponent>
 
