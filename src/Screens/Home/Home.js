@@ -20,8 +20,10 @@ class Home extends React.Component{
         changeSearchQuery(text);
     };
     
+    
     onFabButtonTouched = () =>{
         console.warn('fabButton has been touched');
+        //todoefe
         fetchCountries();
 
     };
