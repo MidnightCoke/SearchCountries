@@ -4,28 +4,22 @@ import {homeStyles as styles} from './styles';
 import { Header, SearchInput,FabButton } from '../../components';
 import CountryObject from './CountryObject';
 import {fetchCountries, changeSearchQuery} from '../../actions/countries';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 class Home extends React.Component{
     onSearchButtonTouched = () => {
-        console.warn('WHATS UP');
-
-        //call this action by dispatch
-        fetchCountries('some query');
+        this.props.dispatch(fetchCountries('some query'));
     };
     
     onChangeSearchQuery = (text) => {
-        console.warn('bitch =' + text);
-        //TODO: CALL FUNC 
-        changeSearchQuery(text);
+        this.props.dispatch(changeSearchQuery(text));
     };
     
     
     onFabButtonTouched = () =>{
-        console.warn('fabButton has been touched');
-        //todoefe
-        fetchCountries();
-
+        this.props.dispatch(fetchCountries());
     };
 
     render(){
@@ -51,4 +45,12 @@ class Home extends React.Component{
     }
 }
 
-export default Home;
+Home.propTypes = {
+    dispatch: PropTypes.func,
+};
+
+const stateToProps = (state) => {
+    return {};
+};
+
+export default connect(stateToProps)(Home);
