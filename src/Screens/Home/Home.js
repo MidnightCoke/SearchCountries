@@ -9,6 +9,11 @@ import PropTypes from 'prop-types';
 
 
 class Home extends React.Component{
+
+    componentDidMount(){
+        this.props.dispatch(fetchCountries());
+    };
+
     onSearchButtonTouched = () => {
         this.props.dispatch(fetchCountries('some query'));
     };
