@@ -1,11 +1,19 @@
 import {call, takeLatest, put} from 'redux-saga/effects';
+
+import {fetch_countries_api} from '../api/webapi';
+import { fetchCountriesResult } from '../actions/countries';
 import {CountriesActionTypes as ActionTypes} from '../types/ActionTypes';
+
 
 function* fetchCountriesSaga(action) {
     try {
-        //TODO: call the api here
+        const {searchQuery} = action;
+
+        const response = yield call(fetch_countries_api, searchQuery);
+        yield put(fetchCountriesResult(false, response.data));
     } catch (e){
-        //TODO: catch the errors here
+        yield put(fetchCountriesResult(true));
+        
     }
 
 }
