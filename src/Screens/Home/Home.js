@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, FlatList} from 'react-native';
 import {homeStyles as styles} from './styles';
 import { Header, SearchInput,FabButton } from '../../components';
 import CountryObject from './CountryObject';
@@ -29,17 +29,23 @@ class Home extends React.Component{
     };
 
     render(){
+        const renderCountryItem = ({item}) => <CountryObject country={item}/>;
         return(
-            <View style={{ flex: 1 }}>
-                <ScrollView style= {{ flex: 1}}>
+            <View style={styles.container}>
+                <ScrollView style= {styles.container}>
                     <Header />
                     <SearchInput
                         placeholder='Ülke Adı'
                         onPress={this.onSearchButtonTouched}
                         onChangeText={this.onChangeSearchQuery}
-                        style= {{alignSelf: 'center'}}
+                        style= {styles.searchInput}
                     />
-                    <CountryObject />
+                    <View style ={styles.line}/>
+                    <FlatList
+                    data = {this.props.countries}
+                    renderItem = {renderCountryItem}
+                    keyExtractor = {item => item.name}
+                    />
                 </ScrollView>
                 <FabButton 
                 icon='refresh' 
@@ -53,6 +59,7 @@ class Home extends React.Component{
 
 Home.propTypes = {
     dispatch: PropTypes.func,
+    
     countries: PropTypes.array,
     searchQuery: PropTypes.string,
 };
@@ -61,6 +68,7 @@ const stateToProps = (state) => {
     const {countries,searchQuery} = state.countries;
     return {
         searchQuery,
+        countries,
     };
 };
 
